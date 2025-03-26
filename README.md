@@ -41,8 +41,11 @@ El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
 
 El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
 
-Gráfica de la señal filtrada:
-![image]()
+## ***Gráfica de la señal filtrada:***
+
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/Captura%20de%20pantalla%202025-03-25%20235419.png)
+
+***NOTA:*** Se observa que la señal filtrada y la señal original son muy similares. Esto puede deberse a que el sistema de adquisición de datos DAQ NI USB-6008 aplica un preprocesamiento interno que reduce el ruido antes de la captura. Además, la señal EMG adquirida no presentaba una cantidad significativa de ruido en las bandas eliminadas por los filtros pasa altos y bajos, lo que explica la mínima diferencia visual entre ambas señales.
 
 
 
