@@ -43,9 +43,21 @@ El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
 
 ## ***Gráfica de la señal filtrada:***
 
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/Captura%20de%20pantalla%202025-03-25%20235419.png)
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.09%20AM.jpeg)
 
 ***NOTA:*** Se observa que la señal filtrada y la señal original son muy similares. Esto puede deberse a que el sistema de adquisición de datos DAQ NI USB-6008 aplica un preprocesamiento interno que reduce el ruido antes de la captura. Además, la señal EMG adquirida no presentaba una cantidad significativa de ruido en las bandas eliminadas por los filtros pasa altos y bajos, lo que explica la mínima diferencia visual entre ambas señales.
+
+## ***Análisis Espectral***
+Se aplicó la Transformada Rápida de Fourier para obtener la frecuencia mediana.
+
+***Parámetros analizados:***
+- Frecuencia dominante: 45.90 Hz.
+- Frecuencia media: 45.80 Hz.
+- Desviación estándar: 10.19 Hz.
+  
+## ***Gráfica del espectro de frecuencia:***
+
+
 
 
 
