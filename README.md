@@ -56,7 +56,7 @@ Se aplicó la Transformada Rápida de Fourier para obtener la frecuencia mediana
 - Desviación estándar: 10.19 Hz.
   
 ## ***Gráfica del espectro de frecuencia:***
-
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.32%20AM.jpeg)
 
 
 
