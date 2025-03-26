@@ -17,6 +17,30 @@ DAQ (NI USB-6008)
 AD8232
 ## ***PROCEDIMIENTO*** 
 - Adquisición Señal
+```python
+import nidaqmx
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from scipy.signal import butter, filtfilt, welch
+
+from scipy.fftpack import fft
+
+fs = 1000  
+tiempo = 5
+canal = "Dev3/ai0" 
+
+with nidaqmx.Task() as task:
+    task.ai_channels.add_ai_voltage_chan(canal, min_val=-10.0, max_val=10.0)  
+    task.timing.cfg_samp_clk_timing(fs, samps_per_chan=fs*tiempoa)
+    datos = task.read(number_of_samples_per_channel=fs*tiempoa)
+    datos = np.array(datos)
+
+tiempo = np.linspace(0, tiempoa, len(datos))
+
+```
 - frecuencia de muestreo de 1000Hz
 - tiempo de muestreo de 5 segundos 
 - 5000 muestras (longitud de la señal)
@@ -27,6 +51,16 @@ AD8232
 
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.23.46%20AM.jpeg)
 
+```python
+plt.figure(figsize=(10, 4))
+plt.plot(tiempo, datos)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.title("Señal EMG")
+plt.grid()
+plt.show()
+```
+
 ## ***Filtrado de la Señal***
 Se aplicaron los siguientes filtros:
 
@@ -35,6 +69,13 @@ Se aplicaron los siguientes filtros:
 ***Filtro Pasa Bajas:*** Frecuencia de corte en 450 Hz.
 
 ***Orden del filtro:*** 4 (Butterworth).
+```python
+def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
+    nyquist = 0.5 * fs  
+    normal_cutoff = cutoff / nyquist
+    b, a = butter(order, normal_cutoff, btype=filter_type, analog=False)
+    return filtfilt(b, a, data)
+```
 
 ## ***Justificación:***
 El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
@@ -42,13 +83,38 @@ El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
 El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
 
 ## ***Gráfica de la señal filtrada:***
-
+```python
+plt.figure(figsize=(10, 4))
+plt.plot(tiempo, datos_filtrados, label="Señal Filtrada")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.title("Señal EMG Filtrada")
+plt.grid()
+plt.show()
+```
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.09%20AM.jpeg)
 
 ***NOTA:*** Se observa que la señal filtrada y la señal original son muy similares. Esto puede deberse a que el sistema de adquisición de datos DAQ NI USB-6008 aplica un preprocesamiento interno que reduce el ruido antes de la captura. Además, la señal EMG adquirida no presentaba una cantidad significativa de ruido en las bandas eliminadas por los filtros pasa altos y bajos, lo que explica la mínima diferencia visual entre ambas señales.
 
 ## ***Análisis Espectral***
 Se aplicó la Transformada Rápida de Fourier para obtener la frecuencia mediana.
+```python
+N = len(datos_filtrados)  
+frecuencias = np.fft.fftfreq(N, d=1/fs)  
+transformada = np.abs(fft(datos_filtrados)) 
+
+
+plt.figure(figsize=(10, 4))
+plt.plot(frecuencias[:N//2], transformada[:N//2], color='g')
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Amplitud")
+plt.title("Espectro de Frecuencia")
+plt.grid()
+plt.show()
+
+frecuencias_welch, densidad_potencia = welch(datos_filtrados, fs, nperseg=1024)
+frecuencia_mediana = frecuencias_welch[np.where(np.cumsum(densidad_potencia) >= np.sum(densidad_potencia) / 2)[0][0]]
+```
 
 ***Parámetros analizados:***
 - Frecuencia dominante: 45.90 Hz.
@@ -58,8 +124,49 @@ Se aplicó la Transformada Rápida de Fourier para obtener la frecuencia mediana
 ## ***Gráfica del espectro de frecuencia:***
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.32%20AM.jpeg)
 
-## ***Grafica de evolucion de la frecuencia)
-![image]()
+## ***Grafica de evolucion de la frecuencia***
+```python
+ventana = 1
+muestras = int(fs * ventana)  
+num_ventanas = len(datos_filtrados) // muestras  
+
+frecuencias_medianas = []
+
+
+for i in range(num_ventanas):
+    inicio = i * muestras
+    fin = inicio + muestras
+    segmento = datos_filtrados[inicio:fin]
+    
+    if len(segmento) == muestras:
+        f_welch, p_welch = welch(segmento, fs, nperseg=256)
+        f_mediana = f_welch[np.where(np.cumsum(p_welch) >= np.sum(p_welch) / 2)[0][0]]
+        frecuencias_medianas.append(f_mediana)
+
+
+plt.figure(figsize=(10, 4))
+plt.plot(np.arange(len(frecuencias_medianas)), frecuencias_medianas, marker='o', linestyle='-', color='m')
+plt.xlabel("Tiempo (ventanas)")
+plt.ylabel("Frecuencia Mediana (Hz)")
+plt.title("Evolución de la Frecuencia")
+plt.grid()
+plt.show()
+```
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.50%20AM.jpeg)
+
+## ***Análisis de Resultados:***
+
+Los resultados obtenidos muestran una tendencia decreciente en la frecuencia mediana a lo largo del tiempo, lo que sugiere la presencia de fatiga muscular en el músculo analizado. La disminución de la frecuencia mediana indica una reducción en la activación de fibras musculares rápidas, lo cual es consistente con estudios previos sobre fatiga neuromuscular. Además, el análisis espectral evidencia un desplazamiento de la energía hacia frecuencias más bajas, confirmando el proceso de fatiga.
+
+## ***Conclusiones***
+
+- La adquisición de la señal EMG se realizó con éxito, permitiendo capturar la actividad eléctrica del músculo analizado.
+
+- El uso de la Transformada de Fourier y el método de Welch permitió caracterizar la señal en el dominio de la frecuencia, facilitando la identificación de patrones relacionados con la fatiga muscular.
+
+- La disminución progresiva de la frecuencia mediana confirma la presencia de fatiga muscular, indicando un cambio en la activación de las fibras musculares.
+
+
 
 
 
