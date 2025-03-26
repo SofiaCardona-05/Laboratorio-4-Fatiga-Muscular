@@ -1,14 +1,48 @@
 # Laboratorio-4-Fatiga-Muscular
 Este laboratorio se centra en la adquisición y análisis de señales electromiográficas (EMG) para evaluar la fatiga muscular. Se utilizan técnicas de filtrado y análisis espectral para mejorar la calidad de la señal. El desarrollo se realizó en Python y los resultados se documentan en este repositorio
 
-Objetivos
-1. Adquisición de la señal EMG: Capturar una señal electromiográfica 
-2. Filtrado de la señal: Implementar filtros pasa altas y pasa bajas
-3. Aplicación de ventanas: Aplicar una ventana adecuada
-4. Análisis espectral: Transformar la señal al dominio de la frecuencia mediante FFT
+## ***OBJETIVOS***
+Adquisición de la señal EMG: Capturar una señal electromiográfica
 
-MATERIALES
-1. Electrodos
-2. DAQ (NI USB-6008)
-3. AD8232
+Filtrado de la señal: Implementar filtros pasa altas y pasa bajas
+
+Aplicación de ventanas: Aplicar una ventana adecuada
+
+Análisis espectral: Transformar la señal al dominio de la frecuencia mediante FFT
+## ***MATERIALES***
+Electrodos
+
+DAQ (NI USB-6008)
+
+AD8232
+## ***PROCEDIMIENTO*** 
+- Adquisición Señal
+- frecuencia de muestreo de 1000Hz
+- tiempo de muestreo de 5 segundos 
+- 5000 muestras (longitud de la señal)
+- Musculo  Flexor Digitorum Superficialis
+
+
+## ***GRÁFICA DE LA SEÑAL***
+
+
+
+## ***Filtrado de la Señal***
+Se aplicaron los siguientes filtros:
+
+***Filtro Pasa Altas (High-pass)*** Frecuencia de corte en 20 Hz.
+
+***Filtro Pasa Bajas (Low-pass):*** Frecuencia de corte en 450 Hz.
+
+***Orden del filtro:*** 4 (Butterworth).
+
+## ***Justificación:***
+El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
+
+El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
+
+Gráfica de la señal filtrada:
+[Insertar imagen de la señal filtrada]
+
+
 
