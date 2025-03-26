@@ -16,7 +16,7 @@ DAQ (NI USB-6008)
 
 AD8232
 ## ***PROCEDIMIENTO*** 
-- Adquisición Señal
+Adquisición Señal
 ```python
 import nidaqmx
 
@@ -78,9 +78,9 @@ def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
 ```
 
 ## ***Justificación:***
-El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
+-El filtro pasa altas elimina ruido de baja frecuencia que pueden deberse a movimiento del cuerpo. La idea es eliminar frecuencias menores s 20Hz dejando pasar las frecuencias mayores a 20Hz
 
-El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
+-El filtro pasa bajas elimina interferencias de alta frecuencia menores a 450 Hz.
 
 ## ***Gráfica de la señal filtrada:***
 ```python
@@ -156,13 +156,13 @@ plt.show()
 
 ## ***Análisis de Resultados:***
 
-Los resultados obtenidos muestran una tendencia decreciente en la frecuencia mediana a lo largo del tiempo, lo que sugiere la presencia de fatiga muscular en el músculo analizado. La disminución de la frecuencia mediana indica una reducción en la activación de fibras musculares rápidas, lo cual es consistente con estudios previos sobre fatiga neuromuscular. Además, el análisis espectral evidencia un desplazamiento de la energía hacia frecuencias más bajas, confirmando el proceso de fatiga.
+Los resultados obtenidos muestran una tendencia decreciente en la frecuencia mediana a lo largo del tiempo, lo que sugiere la presencia de fatiga muscular en el músculo analizado. La disminución de la frecuencia mediana indica una reducción en la activación de fibras musculares rápidas. Además, el análisis espectral evidencia un desplazamiento de la energía hacia frecuencias más bajas, confirmando el proceso de fatiga.
 
 ## ***Conclusiones***
 
 - La adquisición de la señal EMG se realizó con éxito, permitiendo capturar la actividad eléctrica del músculo analizado.
 
-- El uso de la Transformada de Fourier y el método de Welch permitió caracterizar la señal en el dominio de la frecuencia, facilitando la identificación de patrones relacionados con la fatiga muscular.
+- El uso de la Transformada de Fourier permitió caracterizar la señal en el dominio de la frecuencia, facilitando la identificación de patrones relacionados con la fatiga muscular.
 
 - La disminución progresiva de la frecuencia mediana confirma la presencia de fatiga muscular, indicando un cambio en la activación de las fibras musculares.
 
