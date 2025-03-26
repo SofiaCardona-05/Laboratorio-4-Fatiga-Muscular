@@ -25,7 +25,7 @@ AD8232
 
 ## ***GRÁFICA DE LA SEÑAL***
 
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/Captura%20de%20pantalla%202025-03-25%20235419.png)
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.23.46%20AM.jpeg)
 
 ## ***Filtrado de la Señal***
 Se aplicaron los siguientes filtros:
