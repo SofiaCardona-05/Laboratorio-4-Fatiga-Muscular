@@ -30,9 +30,9 @@ AD8232
 ## ***Filtrado de la Señal***
 Se aplicaron los siguientes filtros:
 
-***Filtro Pasa Altas (High-pass)*** Frecuencia de corte en 20 Hz.
+***Filtro Pasa Altas:*** Frecuencia de corte en 20 Hz.
 
-***Filtro Pasa Bajas (Low-pass):*** Frecuencia de corte en 450 Hz.
+***Filtro Pasa Bajas:*** Frecuencia de corte en 450 Hz.
 
 ***Orden del filtro:*** 4 (Butterworth).
 
