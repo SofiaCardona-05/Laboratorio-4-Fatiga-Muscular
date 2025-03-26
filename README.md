@@ -42,7 +42,7 @@ El filtro pasa altas elimina ruido de baja frecuencia (movimiento del cuerpo).
 El filtro pasa bajas elimina interferencias de alta frecuencia (>450 Hz).
 
 Gráfica de la señal filtrada:
-[Insertar imagen de la señal filtrada]
+![image]()
 
 
 
