@@ -70,6 +70,7 @@ plt.show()
 
 ## ***Filtrado de la Señal***
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2023.28.34.jpeg)
+
 Se aplicaron los siguientes filtros:
 
 ***Filtro Pasa Altas:*** Frecuencia de corte en 80 Hz.
