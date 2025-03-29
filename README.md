@@ -23,7 +23,7 @@ Adquisición Señal
 
 
 ```python
-import nidaqmx
+import nidaqmx 
 
 import numpy as np
 
