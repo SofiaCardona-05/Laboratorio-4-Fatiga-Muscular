@@ -75,7 +75,7 @@ Se aplicaron los siguientes filtros:
 
 ***Filtro Pasa Bajas:*** Frecuencia de corte en 120 Hz.
 -Entre 80 Hz y 120 Hz trabajan intensamente las fibras rápidas, estas son frecuencias que permiten capturar la señal ECG
-***Orden del filtro:*** 4 (Butterworth).
+Orden del filtro: 2 (Butterworth).
 ```python
 def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
     nyquist = 0.5 * fs  
@@ -83,23 +83,19 @@ def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
     b, a = butter(order, normal_cutoff, btype=filter_type, analog=False)
     return filtfilt(b, a, data)
 ```
-## 🪟 Aplicación de Ventanas
+##Aplicación de Ventanas
 
-Para segmentar la señal EMG antes del análisis espectral, se aplicó una **ventana de tipo Hanning** a cada segmento de 0.2 segundos.
+Para segmentar la señal EMG antes del análisis espectral, se aplicó una ventana de tipo Hanning a cada segmento de 0.2 segundos.
 
-La **ventana de Hanning** es una función de forma suave, que reduce los bordes abruptos de las ventanas, lo cual minimiza los efectos no deseados en la Transformada de Fourier (como fugas espectrales). 
+La ventana de Hanning es una función de forma suave, que reduce los bordes abruptos de las ventanas, lo cual minimiza los efectos no deseados en la Transformada de Fourier (como fugas espectrales). 
 
 ### Características de la ventana:
 - **Tipo**: Hanning
-- **Duración**: 0.2 segundos
-- **Muestras por ventana**: 600 (calculado como `fs * 0.2` con `fs = 3000 Hz`)
+- **Duración**: 0.1 segundos
+- **Muestras por ventana**: 300 (calculado como fs * 0.1 con fs = 3000 Hz)
 
-### Criterio de selección:
-Se eligió la ventana de Hanning porque proporciona una transición gradual en los extremos del segmento, lo que reduce las discontinuidades al aplicar la FFT. Es ampliamente utilizada en análisis de señales biológicas por su buen compromiso entre resolución y atenuación de bordes.
 
-A continuación se muestra una comparación entre la señal original y la misma señal después de aplicarle la ventana:
 
-![comparacion_ventana](ruta/a/tu/imagen.png)
 
 ## ***Justificación:***
 -El filtro pasa altas elimina ruido de baja frecuencia que pueden deberse a movimiento del cuerpo. La idea es eliminar frecuencias menores s 20Hz dejando pasar las frecuencias mayores a 20Hz
