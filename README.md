@@ -94,6 +94,7 @@ La ventana de Hanning es una función de forma suave, que reduce los bordes abru
 - **Duración**: 0.1 segundos
 - **Muestras por ventana**: 300 (calculado como fs * 0.1 con fs = 3000 Hz)
 
+![image](https://github.com/user-attachments/assets/c9598a6a-44a6-489c-b640-599d6ca3c7df)
 
 
 
