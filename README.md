@@ -21,8 +21,6 @@ Adquisición Señal
   <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="200"/>
 </p>
 
-
-```
 - frecuencia de muestreo de fs = 3000Hz
 - tiempo de muestreo = diracion = muestras/fs
 - 9000 muestras (longitud de la señal)
