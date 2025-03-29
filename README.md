@@ -33,8 +33,10 @@ from scipy.signal import butter, filtfilt, welch
 
 from scipy.fftpack import fft
 
-fs = 1000  
-tiempo = 5
+frecuencia de muestreo de fs = 3000Hz
+tiempo de muestreo = diracion = muestras/fs
+9000 muestras (longitud de la señal)
+Musculo  Flexor Digitorum Superficialis
 canal = "Dev3/ai0" 
 
 with nidaqmx.Task() as task:
@@ -46,9 +48,9 @@ with nidaqmx.Task() as task:
 tiempo = np.linspace(0, tiempoa, len(datos))
 
 ```
-- frecuencia de muestreo de 1000Hz
-- tiempo de muestreo de 5 segundos 
-- 5000 muestras (longitud de la señal)
+- frecuencia de muestreo de fs = 3000Hz
+- tiempo de muestreo = diracion = muestras/fs
+- 9000 muestras (longitud de la señal)
 - Musculo  Flexor Digitorum Superficialis
 
 
@@ -69,10 +71,10 @@ plt.show()
 ## ***Filtrado de la Señal***
 Se aplicaron los siguientes filtros:
 
-***Filtro Pasa Altas:*** Frecuencia de corte en 20 Hz.
+***Filtro Pasa Altas:*** Frecuencia de corte en 80 Hz.
 
-***Filtro Pasa Bajas:*** Frecuencia de corte en 450 Hz.
-
+***Filtro Pasa Bajas:*** Frecuencia de corte en 120 Hz.
+-Entre 80 Hz y 120 Hz trabajan intensamente las fibras rápidas, estas son frecuencias que permiten capturar la señal ECG
 ***Orden del filtro:*** 4 (Butterworth).
 ```python
 def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
