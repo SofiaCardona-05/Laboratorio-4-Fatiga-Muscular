@@ -18,7 +18,7 @@ AD8232: modulo especializado para el monitoreo de señales ECG, aunque sea dise�
 ## ***PROCEDIMIENTO*** 
 Adquisición Señal
 <p align="center">
-  <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="400"/>
+  <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="200"/>
 </p>
 
 
