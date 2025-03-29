@@ -14,9 +14,10 @@ Electrodos
 
 DAQ (NI USB-6008)
 
-AD8232
+AD8232: modulo especializado para el monitoreo de señales ECG, aunque sea diseñado para ECG su puede captar señales EMG 
 ## ***PROCEDIMIENTO*** 
 Adquisición Señal
+
 ```python
 import nidaqmx
 
