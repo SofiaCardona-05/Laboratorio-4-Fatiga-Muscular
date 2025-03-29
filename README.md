@@ -22,31 +22,6 @@ Adquisición Señal
 </p>
 
 
-```python
-import nidaqmx 
-
-import numpy as np
-
-import matplotlib.pyplot as plt
-
-from scipy.signal import butter, filtfilt, welch
-
-from scipy.fftpack import fft
-
-frecuencia de muestreo de fs = 3000Hz
-tiempo de muestreo = diracion = muestras/fs
-9000 muestras (longitud de la señal)
-Musculo  Flexor Digitorum Superficialis
-canal = "Dev3/ai0" 
-
-with nidaqmx.Task() as task:
-    task.ai_channels.add_ai_voltage_chan(canal, min_val=-10.0, max_val=10.0)  
-    task.timing.cfg_samp_clk_timing(fs, samps_per_chan=fs*tiempoa)
-    datos = task.read(number_of_samples_per_channel=fs*tiempoa)
-    datos = np.array(datos)
-
-tiempo = np.linspace(0, tiempoa, len(datos))
-
 ```
 - frecuencia de muestreo de fs = 3000Hz
 - tiempo de muestreo = diracion = muestras/fs
@@ -58,15 +33,7 @@ tiempo = np.linspace(0, tiempoa, len(datos))
 
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2022.35.11.jpeg)
 
-```python
-plt.figure(figsize=(10, 4))
-plt.plot(tiempo, datos)
-plt.xlabel("Tiempo (s)")
-plt.ylabel("Voltaje (V)")
-plt.title("Señal EMG")
-plt.grid()
-plt.show()
-```
+
 
 ## ***Filtrado de la Señal***
 ![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2023.28.34.jpeg)
@@ -78,13 +45,7 @@ Se aplicaron los siguientes filtros:
 ***Filtro Pasa Bajas:*** Frecuencia de corte en 120 Hz.
 -Entre 80 Hz y 120 Hz trabajan intensamente las fibras rápidas, estas son frecuencias que permiten capturar la señal ECG
 Orden del filtro: 2 (Butterworth).
-```python
-def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
-    nyquist = 0.5 * fs  
-    normal_cutoff = cutoff / nyquist
-    b, a = butter(order, normal_cutoff, btype=filter_type, analog=False)
-    return filtfilt(b, a, data)
-```
+
 ##Aplicación de Ventanas
 
 Para segmentar la señal EMG antes del análisis espectral, se aplicó una ventana de tipo Hanning a cada segmento de 0.2 segundos.
