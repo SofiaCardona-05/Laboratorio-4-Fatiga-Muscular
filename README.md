@@ -18,7 +18,7 @@ AD8232: modulo especializado para el monitoreo de señales ECG, aunque sea dise�
 ## ***PROCEDIMIENTO*** 
 Adquisición Señal
 <p align="center">
-  <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="800"/>
+  <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="200"/>
 </p>
 
 
@@ -95,7 +95,7 @@ La ventana de Hanning es una función de forma suave, que reduce los bordes abru
 - **Muestras por ventana**: 300 (calculado como fs * 0.1 con fs = 3000 Hz)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c9598a6a-44a6-489c-b640-599d6ca3c7df" width="200"/>
+  <img src="https://github.com/user-attachments/assets/c9598a6a-44a6-489c-b640-599d6ca3c7df" width="500"/>
 </p>
 
 
