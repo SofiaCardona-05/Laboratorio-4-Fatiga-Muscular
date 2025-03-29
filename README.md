@@ -54,7 +54,7 @@ tiempo = np.linspace(0, tiempoa, len(datos))
 
 ## ***GRÁFICA DE LA SEÑAL***
 
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.23.46%20AM.jpeg)
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/image.png)
 
 ```python
 plt.figure(figsize=(10, 4))
