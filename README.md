@@ -1,4 +1,4 @@
-# Laboratorio-4-Fatiga-Muscular
+# Laboratorio 4 Fatiga Muscular
 Este laboratorio se centra en la adquisición y análisis de señales electromiográficas (EMG) para evaluar la fatiga muscular. Se utilizan técnicas de filtrado y análisis espectral para mejorar la calidad de la señal. El desarrollo se realizó en Python y los resultados se documentan en este repositorio.
 
 ## ***OBJETIVOS***
@@ -83,6 +83,23 @@ def butterworth_filter(data, cutoff, fs, order=4, filter_type='high'):
     b, a = butter(order, normal_cutoff, btype=filter_type, analog=False)
     return filtfilt(b, a, data)
 ```
+## 🪟 Aplicación de Ventanas
+
+Para segmentar la señal EMG antes del análisis espectral, se aplicó una **ventana de tipo Hanning** a cada segmento de 0.2 segundos.
+
+La **ventana de Hanning** es una función de forma suave, que reduce los bordes abruptos de las ventanas, lo cual minimiza los efectos no deseados en la Transformada de Fourier (como fugas espectrales). 
+
+### Características de la ventana:
+- **Tipo**: Hanning
+- **Duración**: 0.2 segundos
+- **Muestras por ventana**: 600 (calculado como `fs * 0.2` con `fs = 3000 Hz`)
+
+### Criterio de selección:
+Se eligió la ventana de Hanning porque proporciona una transición gradual en los extremos del segmento, lo que reduce las discontinuidades al aplicar la FFT. Es ampliamente utilizada en análisis de señales biológicas por su buen compromiso entre resolución y atenuación de bordes.
+
+A continuación se muestra una comparación entre la señal original y la misma señal después de aplicarle la ventana:
+
+![comparacion_ventana](ruta/a/tu/imagen.png)
 
 ## ***Justificación:***
 -El filtro pasa altas elimina ruido de baja frecuencia que pueden deberse a movimiento del cuerpo. La idea es eliminar frecuencias menores s 20Hz dejando pasar las frecuencias mayores a 20Hz
