@@ -101,5 +101,6 @@ Debido a esta ausencia total de variación en los valores, no fue posible aplica
 ### Otras graficas
 
 
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/commit/486f878843f5e0fe126fa8e3c61c295d53e71167)
 
 
