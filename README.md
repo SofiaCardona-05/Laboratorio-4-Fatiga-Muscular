@@ -99,94 +99,43 @@ La ventana de Hanning es una función de forma suave, que reduce los bordes abru
 </p>
 
 
-## ***Justificación:***
--El filtro pasa altas elimina ruido de baja frecuencia que pueden deberse a movimiento del cuerpo. La idea es eliminar frecuencias menores s 20Hz dejando pasar las frecuencias mayores a 20Hz
+## ***Analisis espectral***
+![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2022.40.12.jpeg)
 
--El filtro pasa bajas elimina interferencias de alta frecuencia menores a 450 Hz.
+Se presenta el espectro de frecuencias de la ventana 298 de la señal EMG. El análisis espectral se realizó con la Transformada Rápida de Fourier (FFT)
+En este espectro se puede observar que:
 
-## ***Gráfica de la señal filtrada:***
-```python
-plt.figure(figsize=(10, 4))
-plt.plot(tiempo, datos_filtrados, label="Señal Filtrada")
-plt.xlabel("Tiempo (s)")
-plt.ylabel("Voltaje (V)")
-plt.title("Señal EMG Filtrada")
-plt.grid()
-plt.show()
-```
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.09%20AM.jpeg)
+- La frecuencia dominante se encuentra cerca de los 100 Hz, lo cual es típico de una señal EMG activa.
+- La magnitud más alta 850.
+- El resto de la energía está distribuida en componentes de menor magnitud, lo que es coherente con la actividad muscular registrada.
 
-***NOTA:*** Se observa que la señal filtrada y la señal original son muy similares. Esto puede deberse a que el sistema de adquisición de datos DAQ NI USB-6008 aplica un preprocesamiento interno que reduce el ruido antes de la captura. Además, la señal EMG adquirida no presentaba una cantidad significativa de ruido en las bandas eliminadas por los filtros pasa altos y bajos, lo que explica la mínima diferencia visual entre ambas señales.
+## Resultados y Análisis Estadístico
 
-## ***Análisis Espectral***
-Se aplicó la Transformada Rápida de Fourier para obtener la frecuencia mediana.
-```python
-N = len(datos_filtrados)  
-frecuencias = np.fft.fftfreq(N, d=1/fs)  
-transformada = np.abs(fft(datos_filtrados)) 
+Tras aplicar el análisis espectral a cada ventana de la señal EMG filtrada y segmentada con ventanas de Hanning. 
 
+Se realizó una prueba de diferencia de medias entre las frecuencias medianas del inicio y del final del experimento. Esta prueba permite determinar si hay una disminución significativa de la frecuencia, lo cual es un indicador de fatiga muscular.
 
-plt.figure(figsize=(10, 4))
-plt.plot(frecuencias[:N//2], transformada[:N//2], color='g')
-plt.xlabel("Frecuencia (Hz)")
-plt.ylabel("Amplitud")
-plt.title("Espectro de Frecuencia")
-plt.grid()
-plt.show()
+Sin embargo, en este caso no fue posible aplicar la prueba estadística debido a que los datos no presentaban variación (frecuencia mediana constante en todas las ventanas analizadas).
 
-frecuencias_welch, densidad_potencia = welch(datos_filtrados, fs, nperseg=1024)
-frecuencia_mediana = frecuencias_welch[np.where(np.cumsum(densidad_potencia) >= np.sum(densidad_potencia) / 2)[0][0]]
-```
+---
 
-***Parámetros analizados:***
-- Frecuencia dominante: 45.90 Hz.
-- Frecuencia media: 45.80 Hz.
-- Desviación estándar: 10.19 Hz.
-  
-## ***Gráfica del espectro de frecuencia:***
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.32%20AM.jpeg)
+### Hipótesis estadística
 
-## ***Grafica de evolucion de la frecuencia***
-```python
-ventana = 1
-muestras = int(fs * ventana)  
-num_ventanas = len(datos_filtrados) // muestras  
+- **Hipótesis nula (H₀):** No hay diferencia significativa entre las frecuencias medianas al inicio y al final del ejercicio.
+- **Hipótesis alternativa (H₁):** La frecuencia mediana disminuye significativamente al final del ejercicio, lo que sugiere fatiga muscular.
 
-frecuencias_medianas = []
+---
 
+### Conclusión
 
-for i in range(num_ventanas):
-    inicio = i * muestras
-    fin = inicio + muestras
-    segmento = datos_filtrados[inicio:fin]
-    
-    if len(segmento) == muestras:
-        f_welch, p_welch = welch(segmento, fs, nperseg=256)
-        f_mediana = f_welch[np.where(np.cumsum(p_welch) >= np.sum(p_welch) / 2)[0][0]]
-        frecuencias_medianas.append(f_mediana)
+Durante el análisis espectral de la señal EMG, se observó que la frecuencia mediana se mantuvo constante en todas las ventanas analizadas, con un valor estable de 750.0 Hz.
 
+Esto indica que no se detectaron signos de fatiga muscular, ya que uno de los indicadores clásicos de fatiga es la disminución progresiva de la frecuencia mediana a lo largo del tiempo. Al no presentarse dicha disminución, la señal se considera estable desde el punto de vista espectral.
 
-plt.figure(figsize=(10, 4))
-plt.plot(np.arange(len(frecuencias_medianas)), frecuencias_medianas, marker='o', linestyle='-', color='m')
-plt.xlabel("Tiempo (ventanas)")
-plt.ylabel("Frecuencia Mediana (Hz)")
-plt.title("Evolución de la Frecuencia")
-plt.grid()
-plt.show()
-```
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-26%20at%2012.24.50%20AM.jpeg)
+Debido a esta ausencia total de variación en los valores, no fue posible aplicar una prueba estadística (como el test de diferencia de medias), ya que este tipo de análisis requiere que exista al menos una mínima dispersión en los datos para comparar dos grupos.
 
-## ***Análisis de Resultados:***
+---
 
-Los resultados obtenidos muestran una tendencia decreciente en la frecuencia mediana a lo largo del tiempo, lo que sugiere la presencia de fatiga muscular en el músculo analizado. La disminución de la frecuencia mediana indica una reducción en la activación de fibras musculares rápidas. Además, el análisis espectral evidencia un desplazamiento de la energía hacia frecuencias más bajas, confirmando el proceso de fatiga.
-
-## ***Conclusiones***
-
-- La adquisición de la señal EMG se realizó con éxito, permitiendo capturar la actividad eléctrica del músculo analizado.
-
-- El uso de la Transformada de Fourier permitió caracterizar la señal en el dominio de la frecuencia, facilitando la identificación de patrones relacionados con la fatiga muscular.
-
-- La disminución progresiva de la frecuencia mediana confirma la presencia de fatiga muscular, indicando un cambio en la activación de las fibras musculares.
 
 
 
