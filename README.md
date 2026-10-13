@@ -1,106 +1,74 @@
-# Laboratorio 4 Fatiga Muscular
-Este laboratorio se centra en la adquisición y análisis de señales electromiográficas (EMG) para evaluar la fatiga muscular. Se utilizan técnicas de filtrado y análisis espectral para mejorar la calidad de la señal. El desarrollo se realizó en Python y los resultados se documentan en este repositorio.
+## Metodología
 
-## ***OBJETIVOS***
-Adquisición de la señal EMG: Capturar una señal electromiográfica
+## Medición y control de temperatura
 
-Filtrado de la señal: Implementar filtros pasa altas y pasa bajas
+### 1. Montaje del sistema de medición
 
-Aplicación de ventanas: Aplicar una ventana adecuada
+Para medir la temperatura en el prototipo de incubadora neonatal a escala, se utilizó un termistor NTC, cuya resistencia eléctrica disminuye cuando aumenta la temperatura. El sensor se conectó a una tarjeta ESP32 mediante un divisor de voltaje compuesto por el termistor y una resistencia fija de 3,3 kΩ.
 
-Análisis espectral: Transformar la señal al dominio de la frecuencia mediante FFT
-## ***MATERIALES***
-Electrodos
+El voltaje del punto medio del divisor se conectó al pin analógico GPIO 34 de la ESP32, permitiendo adquirir la señal eléctrica asociada a las variaciones de temperatura.
 
-DAQ (NI USB-6008)
+**Figura 1. Circuito de medición de temperatura con termistor NTC y ESP32.**
 
-AD8232: modulo especializado para el monitoreo de señales ECG, aunque sea diseñado para ECG su puede captar señales EMG 
-## ***PROCEDIMIENTO*** 
-Adquisición Señal
-<p align="center">
-  <img src="https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2021.26.47.jpeg?raw=true" width="200"/>
-</p>
+![Circuito de medición de temperatura](imagenes/circuito_temperatura.png)
 
-- frecuencia de muestreo de fs = 3000Hz
-- tiempo de muestreo = diracion = muestras/fs
-- 9000 muestras (longitud de la señal)
-- Musculo  Flexor Digitorum Superficialis
+### 2. Adquisición y procesamiento de la señal
 
+La adquisición de datos se realizó mediante un programa desarrollado en Arduino IDE. En cada ciclo, la ESP32 tomó 100 muestras de voltaje y calculó su promedio para reducir las fluctuaciones de la lectura.
 
-## ***GRÁFICA DE LA SEÑAL***
+A partir del voltaje promedio, se calculó la resistencia del termistor mediante la ecuación del divisor de voltaje:
 
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2022.35.11.jpeg)
+\[
+R_{NTC}=R_F\left(\frac{V_{CC}-V_{NTC}}{V_{NTC}}\right)
+\]
 
+Donde:
 
+- \(R_{NTC}\): resistencia calculada del termistor.
+- \(R_F\): resistencia fija de 3,3 kΩ.
+- \(V_{CC}\): voltaje de alimentación de 3,3 V.
+- \(V_{NTC}\): voltaje medido en el punto medio del divisor.
 
-## ***Filtrado de la Señal***
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2023.28.34.jpeg)
+La resistencia obtenida se utilizó para estimar la temperatura en grados Celsius mediante una función de interpolación lineal basada en puntos de calibración experimentales.
 
-Se aplicaron los siguientes filtros:
+### 3. Calibración del termistor
 
-***Filtro Pasa Altas:*** Frecuencia de corte en 80 Hz.
+La calibración se realizó utilizando mediciones de temperatura de referencia y sus correspondientes valores de resistencia. Se emplearon puntos de referencia aproximados de 18 °C, 24 °C, 36 °C y 37 °C para establecer intervalos de interpolación.
 
-***Filtro Pasa Bajas:*** Frecuencia de corte en 120 Hz.
--Entre 80 Hz y 120 Hz trabajan intensamente las fibras rápidas, estas son frecuencias que permiten capturar la señal ECG
-Orden del filtro: 2 (Butterworth).
+La temperatura calculada se consideró una estimación experimental. Las lecturas fuera del intervalo calibrado se identificaron mediante mensajes de advertencia, ya que la extrapolación no había sido validada.
 
-##Aplicación de Ventanas
+### 4. Implementación del control de temperatura
 
-Para segmentar la señal EMG antes del análisis espectral, se aplicó una ventana de tipo Hanning a cada segmento de 0.2 segundos.
+La temperatura estimada se utilizó como variable de entrada para la lógica de control implementada en la ESP32. El sistema acciona un módulo relé conectado al GPIO 26, que permite controlar el elemento calefactor del prototipo.
 
-La ventana de Hanning es una función de forma suave, que reduce los bordes abruptos de las ventanas, lo cual minimiza los efectos no deseados en la Transformada de Fourier (como fugas espectrales). 
+El relé utilizado opera con lógica activa en nivel bajo: una señal `LOW` lo activa y una señal `HIGH` lo desactiva.
 
-### Características de la ventana:
-- **Tipo**: Hanning
-- **Duración**: 0.1 segundos
-- **Muestras por ventana**: 300 (calculado como fs * 0.1 con fs = 3000 Hz)
+La lógica de control se configuró de la siguiente manera:
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c9598a6a-44a6-489c-b640-599d6ca3c7df" width="500"/>
-</p>
+- **Temperatura inferior a 36 °C:** se solicita calentamiento.
+- **Temperatura igual o superior a 37 °C:** se desactiva el calentamiento.
+- **Temperatura igual o superior a 37,5 °C:** se mantiene el calentamiento desactivado y se genera una alerta de temperatura alta.
 
+Se incorporó histéresis para reducir las conmutaciones repetitivas del relé cerca del límite de control. Si se detecta una lectura eléctrica anómala o una resistencia fuera del intervalo calibrado, el programa desactiva el relé y muestra un mensaje de advertencia.
 
-## ***Analisis espectral***
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/blob/main/WhatsApp%20Image%202025-03-28%20at%2022.40.12.jpeg)
+**Figura 2. Montaje físico del sistema de control de temperatura.**
 
-Se presenta el espectro de frecuencias de la ventana 298 de la señal EMG. El análisis espectral se realizó con la Transformada Rápida de Fourier (FFT)
-En este espectro se puede observar que:
+![Montaje físico del sistema de temperatura](imagenes/montaje_temperatura.jpg)
 
-- La frecuencia dominante se encuentra cerca de los 100 Hz, lo cual es típico de una señal EMG activa.
-- La magnitud más alta 850.
-- El resto de la energía está distribuida en componentes de menor magnitud, lo que es coherente con la actividad muscular registrada.
+### 5. Indicadores visuales y supervisión
 
-## Resultados y Análisis Estadístico
+Se utilizaron dos LED para indicar el estado del sistema. El LED verde representa el estado de calentamiento desactivado, mientras que el LED rojo indica una solicitud de calor o una condición de advertencia.
 
-Tras aplicar el análisis espectral a cada ventana de la señal EMG filtrada y segmentada con ventanas de Hanning. 
+El monitor serie de Arduino IDE permite visualizar el voltaje medido, la resistencia calculada, la temperatura estimada y el estado del relé durante el funcionamiento del prototipo.
 
-Se realizó una prueba de diferencia de medias entre las frecuencias medianas del inicio y del final del experimento. Esta prueba permite determinar si hay una disminución significativa de la frecuencia, lo cual es un indicador de fatiga muscular.
+**Figura 3. Lecturas de temperatura y estado del relé en el monitor serie.**
 
-Sin embargo, en este caso no fue posible aplicar la prueba estadística debido a que los datos no presentaban variación (frecuencia mediana constante en todas las ventanas analizadas).
+![Lecturas del monitor serie](imagenes/monitor_serie.png)
 
----
+### 6. Verificación del funcionamiento
 
-### Hipótesis estadística
+Se realizaron pruebas para comprobar la adquisición de la señal del termistor y la respuesta del relé ante las órdenes de activación y desactivación. También se verificó que el programa identificara lecturas anómalas y mantuviera el calentamiento desactivado ante estas condiciones.
 
-- **Hipótesis nula (H₀):** No hay diferencia significativa entre las frecuencias medianas al inicio y al final del ejercicio.
-- **Hipótesis alternativa (H₁):** La frecuencia mediana disminuye significativamente al final del ejercicio, lo que sugiere fatiga muscular.
+Para evaluar la precisión de la medición, es necesario comparar la temperatura estimada por el sistema con la obtenida mediante un termómetro independiente en diferentes puntos del intervalo de operación. Por ello, la calibración debe considerarse provisional hasta completar esta validación.
 
----
-
-### Conclusión
-
-Durante el análisis espectral de la señal EMG, se observó que la frecuencia mediana se mantuvo constante en todas las ventanas analizadas, con un valor estable de 750.0 Hz.
-
-Esto indica que no se detectaron signos de fatiga muscular, ya que uno de los indicadores clásicos de fatiga es la disminución progresiva de la frecuencia mediana a lo largo del tiempo. Al no presentarse dicha disminución, la señal se considera estable desde el punto de vista espectral.
-
-Debido a esta ausencia total de variación en los valores, no fue posible aplicar una prueba estadística (como el test de diferencia de medias), ya que este tipo de análisis requiere que exista al menos una mínima dispersión en los datos para comparar dos grupos.
-
----
-
-
-### Otras graficas
-
-
-![image](https://github.com/SofiaCardona-05/Laboratorio-4-Fatiga-Muscular/commit/486f878843f5e0fe126fa8e3c61c295d53e71167)
-
-
+**Nota:** El sistema desarrollado corresponde a un prototipo académico a escala y no está validado para uso clínico ni para controlar la temperatura de un recién nacido.
