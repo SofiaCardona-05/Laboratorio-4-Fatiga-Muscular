@@ -9,7 +9,8 @@ Para medir la temperatura en la encubadora a escala, se utilizó; un termistor N
 El voltaje del punto medio del divisor se conectó al pin GPIO 34 de la ESP32.
 
 <img width="400" alt="CircuitoTemp" src="https://github.com/user-attachments/assets/fc4ef49a-3601-45e3-8026-ee0e968123e2" />
-**Figura 1. Circuito de medición de temperatura con termistor NTC y ESP32.
+
+**Figura 1. Circuito de medición de temperatura con termistor NTC y ESP32.**
 
 
 ### 2. Adquisición y procesamiento de la señal
