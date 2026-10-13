@@ -8,7 +8,7 @@ Para medir la temperatura en la encubadora a escala, se utilizó; un termistor N
 
 El voltaje del punto medio del divisor se conectó al pin GPIO 34 de la ESP32.
 
-**<img width="900" height="1600" alt="CircuitoTemp" src="https://github.com/user-attachments/assets/fc4ef49a-3601-45e3-8026-ee0e968123e2" />
+<img width="400" alt="CircuitoTemp" src="https://github.com/user-attachments/assets/fc4ef49a-3601-45e3-8026-ee0e968123e2" />
 **Figura 1. Circuito de medición de temperatura con termistor NTC y ESP32.
 
 
@@ -48,7 +48,7 @@ La lógica de control se configuró de la siguiente manera:
 - **Temperatura igual o superior a 37,5 °C:** se mantiene el calentamiento desactivado y se genera una alerta de temperatura alta.
 
 
-<img width="1600" height="900" alt="Completotemp" src="https://github.com/user-attachments/assets/ae29806b-d59d-4223-b1cc-946413e70ed3" />
+<img width="400" alt="Completotemp" src="https://github.com/user-attachments/assets/ae29806b-d59d-4223-b1cc-946413e70ed3" />
 
 **Figura 2. Montaje físico del sistema de control de temperatura.**
 
