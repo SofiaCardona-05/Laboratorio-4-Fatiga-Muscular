@@ -67,41 +67,28 @@ La principal diferencia está en su estructura y forma de transferencia de calor
 
 ## Costos del prototipo
 
-A continuación, se presenta el presupuesto estimado de los materiales y componentes utilizados para la construcción de la incubadora neonatal a escala. Los precios están expresados en pesos colombianos (COP) y corresponden a referencias comerciales y estimaciones presupuestales.
+A continuación, se presenta el presupuesto estimado de los materiales y componentes utilizados para la construcción de la incubadora neonatal a escala. Los precios están expresados en pesos colombianos (COP).
 
-| N.º | Material o componente | Cantidad | Precio unitario (COP) | Precio total (COP) |
-|---:|---|---:|---:|---:|
-| 1 | ESP32 DevKit V1 | 1 | $28.000 | $28.000 |
-| 2 | Termistor NTC | 1 | $12.000 | $12.000 |
-| 3 | Módulo relé de 5 V | 1 | $11.000 | $11.000 |
-| 4 | Bombillo de 100 W | 1 | $4.200 | $4.200 |
-| 5 | Ventilador pequeño de corriente continua | 1 | $12.875 | $12.875 |
-| 6 | Láminas de acrílico transparente | 1 lote | $70.000 | $70.000 |
-| 7 | Resistencia fija de 3,3 kΩ | 1 | $500 | $500 |
-| 8 | LED indicadores | 3 | $500 | $1.500 |
-| 9 | Protoboard | 1 | $8.000 | $8.000 |
-| 10 | Cables jumper | 1 juego | $6.000 | $6.000 |
-| 11 | Portalámparas y cableado | 1 juego | $10.000 | $10.000 |
-| 12 | Interruptor y fusible | 1 juego | $8.000 | $8.000 |
-| 13 | Cable USB para programación | 1 | $5.000 | $5.000 |
-| 14 | Base y estructura de soporte | 1 lote | $25.000 | $25.000 |
-| 15 | Pegamento, tornillos y elementos de fijación | 1 lote | $10.000 | $10.000 |
-| | **Costo total estimado** | | | **$212.075 COP** |
+| N.º | Material o componente | Cantidad | Costo (COP) |
+|---:|---|---:|---:|
+| 1 | ESP32  | 1 | $28.000 |
+| 2 | Termistor NTC | 1 | $12.000 |
+| 3 | Módulo relé de 5 V | 1 | $11.000 |
+| 4 | Bombillo de 100 W | 1 | $4.200 |
+| 5 | Ventilador pequeño de corriente continua | 1 | $12.875 |
+| 6 | Caja Plastica | 1 lote | $70.000 |
+| 7 | Resistencia fija de 3,3 kΩ | 1 | $500 |
+| 8 | LED indicadores | 3 | $1.500 |
+| 9 | Protoboard | 1 | $8.000 |
+| 10 | Cables jumper | 1 juego | $6.000 |
+| 11 | Portalámparas y cableado | 1 juego | $10.000 |
+| 12 | Interruptor y fusible | 1 juego | $8.000 |
+| 13 | Cable USB para programación | 1 | $5.000 |
+| 14 | Base y estructura de soporte | 1 lote | $25.000 |
+| 15 | Pegamento, tornillos y elementos de fijación | 1 lote | $10.000 |
+| | **Costo total estimado** | | **$212.075 COP** |
 
-### Consideraciones del presupuesto
 
-- Los precios son aproximados y pueden variar según el proveedor.
-- Los valores que no cuentan con una cotización específica se consideran estimaciones presupuestales.
-- No se incluyen costos de transporte, mano de obra ni herramientas.
-- El presupuesto corresponde a un prototipo académico a escala y no a una incubadora neonatal certificada para uso clínico.
-
-### Fuentes de consulta
-
-1. [GYO Ingeniería – ESP32 DevKit V1](https://gyoingenieria.com/producto/esp32-devkit-v1).
-2. [GYO Ingeniería – Componentes electrónicos](https://gyoingenieria.com/tienda/pagina/5).
-3. [MercadoLibre Colombia – Termistores NTC](https://listado.mercadolibre.com.co/termistor-ntc).
-4. [Zamux – Productos eléctricos](https://zamux.co/).
-5. [MercadoLibre Colombia – Componentes y ventiladores](https://www.mercadolibre.com.co/).
 
 ### Referencias
 
