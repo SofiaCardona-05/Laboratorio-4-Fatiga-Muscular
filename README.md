@@ -30,7 +30,7 @@ Se observaron los valores registrados por el monitor uMEC 100 y la forma de onda
 - Frecuencia cardíaca indicada por el monitor: 39 bpm.
 - SpO2 indicada por el monitor: 96%.
 
-<img width="1080" height="1440" alt="BradicardiaF" src="https://github.com/user-attachments/assets/c35e0f2e-33ef-4381-8558-607eec5bb68c" />
+<img width="400" alt="BradicardiaF" src="https://github.com/user-attachments/assets/c35e0f2e-33ef-4381-8558-607eec5bb68c" />
 
 
 ### 3.3. Prueba 2: Alarma por saturación baja de oxígeno
