@@ -3,7 +3,7 @@
 
 ## 1. Objetivo
 
-Verificar el funcionamiento del monitor de signos vitales Mindray uMEC 100 mediante la simulación de diferentes condiciones fisiológicas con el simulador Pronk OxSim OX-1, evaluando la respuesta de las alarmas visuales y sonoras, la señal fotopletismográfica y la precisión de las mediciones de frecuencia cardíaca y saturación periférica de oxígeno (SpO2).
+Verificar el funcionamiento del monitor de signos vitales Mindray uMEC 100 simulando diferentes condiciones fisiológicas con el simulador Pronk OxSim OX-1, donde se evalua la respuesta de las alarmas visuales y sonoras, la señal fotopletismográfica y la precisión de las mediciones de frecuencia cardíaca y saturación periférica de oxígeno (SpO2).
 
 ## 2. Equipos utilizados
 
@@ -16,7 +16,7 @@ Verificar el funcionamiento del monitor de signos vitales Mindray uMEC 100 media
 
 ### 3.1. Configuración inicial
 
-Se encendió el monitor Mindray uMEC 100 y se seleccionó el modo de operación monitor. Posteriormente, se conectó el sensor de pulsioximetría al simulador Pronk OxSim OX-1 para generar las señales correspondientes a las pruebas.
+Al encender el Mindray uMEC 100 se seleccionó el modo de operación monitor, donde se conectó el sensor de pulsioximetría al simulador Pronk OxSim OX-1 para generar las señales correspondientes.
 
 ### 3.2. Prueba 1: Simulación de bradicardia
 
@@ -30,7 +30,8 @@ Se observaron los valores registrados por el monitor uMEC 100 y la forma de onda
 - Frecuencia cardíaca indicada por el monitor: 39 bpm.
 - SpO2 indicada por el monitor: 96%.
 
-![Prueba de bradicardia](imagenes/01_Configuracion_Bradicardia.jpg)
+<img width="1080" height="1440" alt="BradicardiaF" src="https://github.com/user-attachments/assets/c35e0f2e-33ef-4381-8558-607eec5bb68c" />
+
 
 ### 3.3. Prueba 2: Alarma por saturación baja de oxígeno
 
@@ -45,7 +46,8 @@ Posteriormente, se ajustó el OxSim para simular una frecuencia cardíaca de 80 
 - Alarma visual: se observó la indicación de alarma por SpO2 inferior al límite.
 - Alarma sonora: se verificó durante la prueba.
 
-![Alarma por saturación baja](imagenes/02_Alarma_SpO2_Baja.jpg)
+<img width="1080" height="1440" alt="2" src="https://github.com/user-attachments/assets/29f70dfb-93d9-43a2-b2fe-ccf52fdf2a59" />
+
 
 ### 3.4. Prueba 3: Simulación de baja perfusión (Low Perfusion)
 
@@ -63,7 +65,8 @@ En la captura se observa la señal fotopletismográfica. La lectura del monitor 
 
 La activación específica de la alarma superior de SpO2 debe confirmarse con el registro de la prueba, ya que la fotografía no permite identificarla de manera inequívoca.
 
-![Prueba Low Perfusion](imagenes/03_Low_Perfusion.jpg)
+<img width="1080" height="1440" alt="3" src="https://github.com/user-attachments/assets/b05404dc-a8d4-4916-938b-34e1781ffc9c" />
+
 
 ### 3.5. Prueba 4: Simulación de taquicardia
 
@@ -79,7 +82,8 @@ En la fotografía se observa una frecuencia cardíaca de 140 bpm y una saturaci�
 
 La activación de la alarma de frecuencia cardíaca elevada debe confirmarse con el registro de la prueba.
 
-![Prueba de taquicardia](imagenes/04_Taquicardia.jpg)
+<img width="1080" height="1440" alt="4" src="https://github.com/user-attachments/assets/94eacc70-a287-484e-b088-2d491616100f" />
+
 
 ## 4. Tabla de verificación de alarmas
 
