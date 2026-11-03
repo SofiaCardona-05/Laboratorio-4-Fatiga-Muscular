@@ -28,7 +28,8 @@ Se observaron los valores registrados por el monitor uMEC 100 y la forma de onda
 - Frecuencia cardíaca medida: 39 bpm.
 - SpO2 medido: 96%.
 
-<img width="400" alt="BradicardiaF" src="https://github.com/user-attachments/assets/c35e0f2e-33ef-4381-8558-607eec5bb68c" />
+<img width="400" alt="Bradi" src="https://github.com/user-attachments/assets/4a65ea62-e834-4570-9b0d-97b4cafb2247" />
+
 
 
 ### 3.3. Prueba 2: Alarma por saturación baja de oxígeno
