@@ -40,30 +40,27 @@ Se configuró el límite inferior de alarma de SpO2 del monitor en 90%.
 Se ajustó el OxSim para simular una frecuencia cardíaca de 80 bpm y una SpO2 de 85%. Se esperaron 5 segundos, y se verificó la activación de la alarma visual y sonora.
 
 **Resultados observados:**
-- Límite inferior configurado: 90%.
 - Alarma visual: se observó la indicación de alarma por SpO2 inferior al límite.
 - Alarma sonora: se verificó durante la prueba.
+- Frecuencia cardíaca medida: 80 bpm.
+- SpO2 medido: 85%.
 
-<img width="1080" height="1440" alt="2" src="https://github.com/user-attachments/assets/29f70dfb-93d9-43a2-b2fe-ccf52fdf2a59" />
+<img width="400" alt="80 85" src="https://github.com/user-attachments/assets/0524a5d3-e0a5-4cca-a0a4-640d7140a742" />
+
 
 
 ### 3.4. Prueba 3: Simulación de baja perfusión (Low Perfusion)
 
-Se configuró el límite superior de alarma de SpO2 en 97%. Posteriormente, se ajustó el simulador OxSim al modo Low Perfusion y se estableció una SpO2 objetivo de 99%.
+Se ajustó el simulador OxSim al modo Low Perfusion y se estableció una SpO2 objetivo de 99%.
 
-Después de realizar el ajuste, se esperaron 5 segundos y se observó la respuesta del monitor, prestando atención a la lectura de SpO2, las alarmas y el comportamiento de la onda fotopletismográfica.
 
 **Resultados observados en la fotografía:**
-- SpO2 objetivo del simulador: 99%.
-- Frecuencia cardíaca indicada: 80 bpm.
-- SpO2 indicada por el monitor: 100%.
-- Diferencia entre SpO2 objetivo e indicada: 1 punto porcentual.
+- Frecuencia cardíaca medida: 80 bpm.
+- SpO2 medida: 100%.
 
-En la captura se observa la señal fotopletismográfica. La lectura del monitor fue de 100%, aunque el valor configurado en el simulador era de 99%.
 
-La activación específica de la alarma superior de SpO2 debe confirmarse con el registro de la prueba, ya que la fotografía no permite identificarla de manera inequívoca.
+<img width="400" alt="Low" src="https://github.com/user-attachments/assets/2474fa66-c3aa-41e0-88ab-52fc77d28313" />
 
-<img width="1080" height="1440" alt="WhatsApp Image 2026-11-03 at 11 00 38" src="https://github.com/user-attachments/assets/9a8d0ed4-82f8-4167-af5b-c8d716b8ea31" />
 
 
 
@@ -71,17 +68,14 @@ La activación específica de la alarma superior de SpO2 debe confirmarse con el
 
 Se configuró el simulador OxSim para generar una frecuencia cardíaca de 140 bpm, manteniendo la SpO2 en 98%.
 
-Se observó la respuesta del monitor Mindray uMEC 100 y se registró la forma de onda correspondiente.
 
 **Resultados de referencia:**
-- Frecuencia cardíaca simulada: 140 bpm.
-- SpO2 simulada: 98%.
+- Frecuencia cardíaca medida: 140 bpm.
+- SpO2 medido: 98%.
 
-En la fotografía se observa una frecuencia cardíaca de 140 bpm y una saturación de oxígeno de 98%.
 
-La activación de la alarma de frecuencia cardíaca elevada debe confirmarse con el registro de la prueba.
+<img width="400" alt="Taqui" src="https://github.com/user-attachments/assets/5aab0146-a1cf-4f7b-978d-a029dd7edef8" />
 
-<img width="1080" height="1440" alt="4" src="https://github.com/user-attachments/assets/94eacc70-a287-484e-b088-2d491616100f" />
 
 
 ## 4. Tabla de verificación de alarmas
