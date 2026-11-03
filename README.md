@@ -65,7 +65,8 @@ En la captura se observa la señal fotopletismográfica. La lectura del monitor 
 
 La activación específica de la alarma superior de SpO2 debe confirmarse con el registro de la prueba, ya que la fotografía no permite identificarla de manera inequívoca.
 
-<img width="1080" height="1440" alt="3" src="https://github.com/user-attachments/assets/b05404dc-a8d4-4916-938b-34e1781ffc9c" />
+<img width="1080" height="1440" alt="WhatsApp Image 2026-11-03 at 11 00 38" src="https://github.com/user-attachments/assets/9a8d0ed4-82f8-4167-af5b-c8d716b8ea31" />
+
 
 
 ### 3.5. Prueba 4: Simulación de taquicardia
