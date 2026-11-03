@@ -104,7 +104,7 @@ $$
 **Error porcentual:**
 
 $$
-E_{\%} = \frac{|V_{simulado} - V_{monitor}|}{V_{simulado}} \times 100
+E_p = \frac{|V_{simulado} - V_{monitor}|}{V_{simulado}} \times 100
 $$
 
 **Donde:**
@@ -112,7 +112,7 @@ $$
 - $V_{simulado}$: valor configurado en el simulador OxSim.
 - $V_{monitor}$: valor registrado por el monitor Mindray uMEC 100.
 - $E_a$: diferencia absoluta entre ambos valores.
-- $E_{\%}$: diferencia porcentual entre el valor simulado y el valor registrado.
+- $E_p$: error porcentual entre el valor simulado y el valor registrado.
 ### 5.1. Resultados de los errores
 
 | Prueba | Variable | OxSim | Mindray | Error absoluto | Error porcentual |
