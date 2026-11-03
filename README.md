@@ -83,33 +83,37 @@ Se configuró el simulador OxSim para generar una frecuencia cardíaca de 140 bp
 
 | Prueba | Límite configurado | Valor simulado | Valor indicado por uMEC 100 | Alarma activa |
 |---|---|---|---|---|
-| Bradicardia | No modificado para esta prueba | FC 40 bpm / SpO2 95% | FC 39 bpm / SpO2 96% | No se documentó |
-| SpO2 baja | Inferior: 90% | FC 80 bpm / SpO2 85% | FC 80 bpm / SpO2 85% | Sí, visual y sonora |
-| Low Perfusion | Superior: 97% | SpO2 99% | SpO2 100% | Por confirmar |
-| Taquicardia | Límite superior de FC: no documentado | FC 140 bpm / SpO2 98% | FC 140 bpm / SpO2 98% | Por confirmar |
+| Bradicardia | No modificado para esta prueba | FC 40 bpm / SpO2 95% | FC 39 bpm / SpO2 96% | No |
+| SpO2 baja | Inferior: 90% | FC 80 bpm / SpO2 85% | FC 80 bpm / SpO2 85% | visual y sonora |
+| Low Perfusion | Superior: 97% | SpO2 99% | SpO2 100% | visual y sonora |
+| Taquicardia | No modificado | FC 140 bpm / SpO2 98% | FC 140 bpm / SpO2 98% | No |
 
-**Nota:** En las pruebas 3 y 4 se debe completar la verificación de las alarmas con las observaciones realizadas durante el laboratorio. No se debe asumir que una alarma se activó únicamente por observar un valor en pantalla.
 
 ## 5. Cálculo de errores de medición
 
 Para evaluar la diferencia entre los valores configurados en el simulador y los valores indicados por el monitor se utilizaron las siguientes expresiones:
 
-**Error absoluto:**
+Error absoluto:
 
-\[
-E_a=|V_{simulado}-V_{monitor}|
-\]
+$$
+E_a = \left|V_{\text{simulado}} - V_{\text{monitor}}\right|
+$$
 
-**Error porcentual:**
+Error porcentual:
 
-\[
-E_{\%}=\frac{|V_{simulado}-V_{monitor}|}{V_{simulado}}\times100
-\]
+$$
+E_{%} = \frac{\left|V_{\text{simulado}} - V_{\text{monitor}}\right|}{\left|V_{\text{simulado}}\right|} \times 100
+$$
 
 Donde:
 
-- \(V_{simulado}\): valor configurado en el OxSim.
-- \(V_{monitor}\): valor indicado por el Mindray uMEC 100.
+$V_{\text{simulado}}$: valor configurado en el simulador OxSim.
+
+$V_{\text{monitor}}$: valor registrado por el monitor Mindray uMEC 100.
+
+$E_a$: diferencia absoluta entre ambos valores.
+
+$E_{%}$: diferencia porcentual respecto al valor configurado en el simulador.
 
 ### 5.1. Resultados de los errores
 
