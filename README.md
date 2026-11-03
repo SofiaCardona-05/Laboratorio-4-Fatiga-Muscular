@@ -20,15 +20,13 @@ Al encender el Mindray uMEC 100 se seleccionó el modo de operación monitor, do
 
 ### 3.2. Prueba 1: Simulación de bradicardia
 
-Se configuró el simulador OxSim para representar una condición de bradicardia, estableciendo una frecuencia cardíaca de 40 bpm y una saturación de oxígeno del 95%.
+El simulador OxSim se configuro para representar una condición de bradicardia, con una frecuencia cardíaca de 40 bpm y una saturación de oxígeno del 95%.
 
 Se observaron los valores registrados por el monitor uMEC 100 y la forma de onda fotopletismográfica.
 
 **Resultados observados:**
-- Frecuencia cardíaca simulada: 40 bpm.
-- SpO2 simulada: 95%.
-- Frecuencia cardíaca indicada por el monitor: 39 bpm.
-- SpO2 indicada por el monitor: 96%.
+- Frecuencia cardíaca medida: 39 bpm.
+- SpO2 medido: 96%.
 
 <img width="400" alt="BradicardiaF" src="https://github.com/user-attachments/assets/c35e0f2e-33ef-4381-8558-607eec5bb68c" />
 
@@ -37,11 +35,11 @@ Se observaron los valores registrados por el monitor uMEC 100 y la forma de onda
 
 Se configuró el límite inferior de alarma de SpO2 del monitor en 90%.
 
-Posteriormente, se ajustó el OxSim para simular una frecuencia cardíaca de 80 bpm y una SpO2 de 85%. A partir de este momento se esperaron 5 segundos, tal como lo establece la guía, y se verificó la activación de la alarma visual y sonora.
+<img width="400" alt="Alarma" src="https://github.com/user-attachments/assets/96c6f844-210e-4fe1-9deb-751fd2341160" />
+
+Se ajustó el OxSim para simular una frecuencia cardíaca de 80 bpm y una SpO2 de 85%. Se esperaron 5 segundos, y se verificó la activación de la alarma visual y sonora.
 
 **Resultados observados:**
-- Frecuencia cardíaca simulada: 80 bpm.
-- SpO2 simulada: 85%.
 - Límite inferior configurado: 90%.
 - Alarma visual: se observó la indicación de alarma por SpO2 inferior al límite.
 - Alarma sonora: se verificó durante la prueba.
