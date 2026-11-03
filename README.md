@@ -1,8 +1,6 @@
 
 # PARTE B. Resultados experimentales
 
-## 1. Objetivo
-
 Verificar el funcionamiento del monitor de signos vitales Mindray uMEC 100 simulando diferentes condiciones fisiológicas con el simulador Pronk OxSim OX-1, donde se evalua la respuesta de las alarmas visuales y sonoras, la señal fotopletismográfica y la precisión de las mediciones de frecuencia cardíaca y saturación periférica de oxígeno (SpO2).
 
 ## 2. Equipos utilizados
