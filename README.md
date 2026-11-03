@@ -93,28 +93,26 @@ Se configuró el simulador OxSim para generar una frecuencia cardíaca de 140 bp
 
 Para evaluar la diferencia entre los valores configurados en el simulador y los valores indicados por el monitor se utilizaron las siguientes expresiones:
 
-Error absoluto:
+### Cálculo de errores
+
+**Error absoluto:**
 
 $$
-E_a = \left|V_{\text{simulado}} - V_{\text{monitor}}\right|
+E_a = |V_{simulado} - V_{monitor}|
 $$
 
-Error porcentual:
+**Error porcentual:**
 
 $$
-E_{%} = \frac{\left|V_{\text{simulado}} - V_{\text{monitor}}\right|}{\left|V_{\text{simulado}}\right|} \times 100
+E_{\%} = \frac{|V_{simulado} - V_{monitor}|}{V_{simulado}} \times 100
 $$
 
-Donde:
+**Donde:**
 
-$V_{\text{simulado}}$: valor configurado en el simulador OxSim.
-
-$V_{\text{monitor}}$: valor registrado por el monitor Mindray uMEC 100.
-
-$E_a$: diferencia absoluta entre ambos valores.
-
-$E_{%}$: diferencia porcentual respecto al valor configurado en el simulador.
-
+- $V_{simulado}$: valor configurado en el simulador OxSim.
+- $V_{monitor}$: valor registrado por el monitor Mindray uMEC 100.
+- $E_a$: diferencia absoluta entre ambos valores.
+- $E_{\%}$: diferencia porcentual entre el valor simulado y el valor registrado.
 ### 5.1. Resultados de los errores
 
 | Prueba | Variable | OxSim | Mindray | Error absoluto | Error porcentual |
